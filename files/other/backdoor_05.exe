@@ -1,0 +1,45 @@
+HEXAGON WINDOWS BACKDOOR - SIGNED CERTIFICATE
+=============================================
+
+TARGET: Windows 10/11 (x64)
+TECHNIQUE: Stolen EV Certificate + Driver Exploit
+PERSISTENCE: Service + WMI + Scheduled Task + COM Hijack
+EVASION: PPL Bypass + ETW Patch + AMSI Bypass
+
+---
+BUILD:
+1. Generate cert: openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+2. Sign: signtool sign /f cert.p12 /p <pass> backdoor_05.exe
+3. Install driver: CVE-2024-XXXX (kernel exploit for PPL)
+4. Deploy: MSI installer + Group Policy
+
+---
+FEATURES:
+- Kernel callback removal (PsSetCreateProcessNotifyRoutine)
+- ETW patching (ntdll!EtwEventWrite = RET)
+- AMSI bypass (amsi.dll!AmsiScanBuffer patch)
+- WDI logging disabled
+- Defender tamper protection bypass
+- Credential Guard bypass (VBS escape)
+- LSASS dumping (PPL bypass via driver)
+- Network pivot (SMB/WinRM/RDP)
+- Lateral movement (Pass-the-hash/Ticket)
+- Persistence (15+ techniques)
+
+---
+C2: HTTPS + DNS + WebSocket + Blockchain
+ENCRYPTION: ChaCha20-Poly1305 + Curve25519
+STAGING: Reflective DLL injection + Process hollowing
+
+---
+OPSEC:
+- Compile-time polymorphism
+- Runtime string encryption
+- Anti-debug (NtGlobalFlag, PEB, timing)
+- Anti-VM (CPUID, hypervisor, devices)
+- Anti-sandbox (sleep acceleration, mouse movement)
+- Memory scanning evasion (heap/stack spoofing)
+
+---
+HEXAGON WINDOWS DIVISION
+"KERNEL IS OUR PLAYGROUND"

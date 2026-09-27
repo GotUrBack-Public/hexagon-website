@@ -1,0 +1,1 @@
+var _0x1a2b=0xDEADBEEF;function _0x3c4d(_0x4e5f){return (_0x1a2b^_0x4e5f).toString(16);}function _0x4e5f(_0x5f6a){var _0x6a7b=0;for(var i=0;i<_0x5f6a.length;i++)_0x6a7b+=_0x5f6a.charCodeAt(i)*31;return _0x3c4d(_0x6a7b);}var _0x5f6a=['H','E','X','A','G','O','N'];console.log(_0x5f6a.join(''));//# sourceMappingURL=decoy_10.js.map

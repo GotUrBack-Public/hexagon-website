@@ -1,0 +1,39 @@
+OPERATIONAL NOTES - CLASSIFIED
+==============================
+
+DATE: 2024-11-15
+OPERATOR: NULL_VECTOR
+STATUS: ACTIVE
+
+---
+TARGET ACQUISITION:
+- Primary: Financial sector infrastructure
+- Secondary: Government contractors
+- Tertiary: Telecommunications backbone
+
+---
+EXPLOIT CHAIN:
+1. Initial Access: Spear-phishing + 0-day
+2. Persistence: Firmware-level rootkit
+3. Privilege Escalation: Kernel exploit (CVE-2024-XXXX)
+4. Lateral Movement: Pass-the-hash + WMI
+5. Data Exfil: DNS tunneling + Steganography
+6. Cleanup: Anti-forensics + Log wiping
+
+---
+INDICATORS OF COMPROMISE:
+- Registry: HKLM\Software\Hexagon\Persistence
+- Network: Beaconing to *.onion:443
+- Process: svchost.exe (unsigned, wrong path)
+- File: %TEMP%\hexagon_*.tmp
+
+---
+COUNTERMEASURES:
+- EDR Bypass: Direct syscalls + Heaven's Gate
+- AV Evasion: Custom packer + Polymorphism
+- Sandbox Detection: Timing + Hardware checks
+- Analysis Prevention: Anti-debug + VM detection
+
+---
+NOTE: This document self-destructs on unauthorized access.
+HEXAGON INTEL DIVISION
